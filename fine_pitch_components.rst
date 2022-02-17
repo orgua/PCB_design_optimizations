@@ -3,7 +3,8 @@ Fine Pitch Components
 
 The goal is to reflow 0.35 mm pitched components more reliably. This collection of techniques is a result of ~ 10 years of designing and manually finishing PCBs.
 
-Subchapters:
+Subsections
+
 - Pads
 - Traces
 - Solder Mask
