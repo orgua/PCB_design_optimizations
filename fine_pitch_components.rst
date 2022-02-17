@@ -1,7 +1,7 @@
 Fine Pitch Components
 =====================
 
-The goal is to reflow 0.35 mm pitched components more reliably. This collection of techniques is a result of ~ 10 years of designing and manually finishing PCBs.
+The goal is to reflow 0.35 mm pitched components more reliably. This collection of techniques is a result of ~ 10 years of designing and manually finishing PCBs. But they are only suggestions as most of them come with a tradeoff.
 
 Subsections
 
@@ -86,15 +86,16 @@ Summary
 Examples
 --------
 
+- usage of the suggestions from above for footprints
 - optimized for T3 Paste, 100 um Stencil
-- tested successfully
+- tested successfully with betalayout and eurocircuits
 
 SOT95 (TSOT23-6)
 ''''''''''''''''''
 
 - pitch is .95 mm
 - pads are .55 x .90 mm and therefor ok for automatic paste reduction of 30%
-- solder mask sliver of >= .2 mm is even satisfied with default mask expansion of 0.1 mm
+- solder mask sliver of >= .2 mm is satisfied with default mask expansion of 0.1 mm
 
 .. image:: ./media_finePitch/SOT95_auto_paste.png
 	:width: 600
@@ -119,6 +120,8 @@ PSON50
 - pads are .23 x .85 mm, reduced mask expansion = .03 mm
 - paste pads are .26 x .50 mm for 66 % fill ratio
 - thermal pad fill is 45 %
+- previous recipes for desaster (shorted paste)
+	- pads .25 x .65 mm, mask expansion = .06 mm, paste .30 x .50 (Gap .133 mm, fillratio = 92%)
 
 .. image:: ./media_finePitch/PSON50_manual.png
 	:width: 600
@@ -132,7 +135,7 @@ SON35 (XSON8, SOT1203)
 - pitch is .35 mm
 - pads are .13 x .55 mm with reduced mask expansion = .005 mm to satisfy the .2 mm gap between pads
 - paste pads are round with .25 um diameter, pad-fill = 69 %, slightly offset to allow more distance
-- previous recipes for desaster: 
+- previous recipes for desaster (shorted paste)
 	- pads .18 x .45 mm, .03 mm expansion, paste .25 x .40 mm (Gap = .115 mm, fillratio = 123%)
 	- pads .16 x .52 mm, .03 mm expansion, paste .22 x .30 mm (Gap = .135 mm, fillratio = 80%)
 
@@ -146,6 +149,8 @@ BGA12
 - pads are .22 x .45 (outer row) with reduced mask expansion = .03 mm to widen the gap between pads
 - paste pads are round with .25 um diameter, pad-fill = 50 % as the microbumps melt on their own and paste is just to fix the component to the pcb
 - longer outer pads allow for better manual pick and place
+- previous recipes for desaster (shorted paste)
+	- pads round .25 mm, reduced solder mask expansion .03 mm, paste mask round x31 mm (gap = .132 mm, fillratio = 123%)
 
 .. image:: ./media_finePitch/BGA12_custom_footprint.png
 	:width: 600
@@ -159,7 +164,7 @@ LGA-Module
 - pitch is 1.1 mm
 - pads are round with d = .60 mm
 - pad-fill is 100 %, ok due to large gap between pads
-- copper trace cross to help positioning component
+- copper-trace-cross helps positioning component manually
 
 .. image:: ./media_finePitch/LGA_manual.png
 	:width: 600
