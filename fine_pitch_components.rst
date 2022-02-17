@@ -89,6 +89,7 @@ Examples
 - tested successfully
 
 SOT95 (TSOT23-6)
+''''''''''''''''''
 
 - pitch is .95 mm
 - pads are .55 x .90 mm and therefor ok for automatic paste reduction of 30%
@@ -98,6 +99,7 @@ SOT95 (TSOT23-6)
 	:width: 600
 	
 SOP50 (TSSOP50-N10)
+''''''''''''''''''
 
 - pitch is .50 mm
 - pads are .25 x .70 mm with reduced mask expansion = .025 mm to satisfy the .2 mm gap between pads
@@ -110,6 +112,7 @@ SOP50 (TSSOP50-N10)
 	:width: 600
 
 PSON50
+'''''''''
 
 - pitch is .50 mm
 - pads are .23 x .85 mm, reduced mask expansion = .03 mm
@@ -123,6 +126,7 @@ PSON50
 	:width: 600
 
 SON35 (XSON8, SOT1203)
+'''''''''''''''''''''''''''
 
 - pitch is .35 mm
 - pads are .13 x .55 mm with reduced mask expansion = .005 mm to satisfy the .2 mm gap between pads
@@ -135,6 +139,7 @@ SON35 (XSON8, SOT1203)
 	:width: 600
 	
 BGA12
+''''''
 
 - pitch is .50 mm
 - pads are .22 x .45 (outer row) with reduced mask expansion = .03 mm to widen the gap between pads
@@ -148,6 +153,7 @@ BGA12
 	:width: 600
 	
 LGA-Module
+'''''''''''
 
 - pitch is 1.1 mm
 - pads are round with d = .60 mm
@@ -159,3 +165,4 @@ LGA-Module
 
 .. image:: ./media_finePitch/LGA_manual_3D.png
 	:width: 600
+	
