@@ -1,9 +1,21 @@
 Fine Pitch Components
 =====================
 
-The goal is to reflow 0.35 mm pitched components more reliably. This collection of techniques is a result of ~ 10 years of designing and manually finishing PCBs. But they are only suggestions as most of them come with a tradeoff.
+The goal is to reflow 0.35 mm pitched components (and everything larger) more reliably. 
+This collection of techniques is a result of ~ 10 years of designing and manually finishing PCBs. 
+But they are only suggestions as most of them come with a tradeoff.
+
+First off: by letting a manufacturer handle your PCBs the result will already be improved and you can get away with suboptimal design. 
+They have professional tools at their disposal and the process is dialed in:
+
+- a proper stencil frame can lift the stencil parallel to pcb
+- with high throughput comes fresher paste and smaller, more expensive solder balls (if needed)
+- a solder paste printer often optimizes the paste-pads depending on the copper-pad-shape
+- pick and place machine are more precise and faster (paste does dry less)
+
 
 Subsections
+''''''''''''''''''
 
 - Pads
 - Traces
@@ -13,8 +25,8 @@ Subsections
 - Examples with Pictures
 
 
-Optimize Pads
--------------
+Pads
+-----
 
 #. extend pads from under IC
 	- Specially for QFN / DFN Packages it helps to trade some extra space for better access with probes oder soldering iron (fix shorts). 
@@ -82,12 +94,13 @@ Summary
 - PCB-Constraint: paste mask reduction of ~ 30 % for 100 um Stencil but keep minimum width >= 5-6 x your largest paste balls (250 um for T3 Paste)
 - manual solder mask extension for fine-pitched components (to meet the min gap between pads)
 - manual paste pads for fine-pitched components (to meet minimum paste width)
+- custom footprints are generally a good idea
 
 Examples
 --------
 
 - usage of the suggestions from above for footprints
-- optimized for T3 Paste, 100 um Stencil
+- optimized for T3 Paste, 100 um Steel-Stencil
 - tested successfully with betalayout and eurocircuits
 
 SOT95 (TSOT23-6)
@@ -121,7 +134,7 @@ PSON50
 - paste pads are .26 x .50 mm for 66 % fill ratio
 - thermal pad fill is 45 %
 - previous recipes for desaster (shorted paste)
-	- pads .25 x .65 mm, mask expansion = .06 mm, paste .30 x .50 (Gap .133 mm, fillratio = 92%)
+	- pads .25 x .65 mm, mask expansion = .06 mm, paste .30 x .50 (Gap .133 mm, fillratio = 92%) -> fixable by soldering
 
 .. image:: ./media_finePitch/PSON50_manual.png
 	:width: 600
@@ -136,8 +149,8 @@ SON35 (XSON8, SOT1203)
 - pads are .13 x .55 mm with reduced mask expansion = .005 mm to satisfy the .2 mm gap between pads
 - paste pads are round with .25 um diameter, pad-fill = 69 %, slightly offset to allow more distance
 - previous recipes for desaster (shorted paste)
-	- pads .18 x .45 mm, .03 mm expansion, paste .25 x .40 mm (Gap = .115 mm, fillratio = 123%)
-	- pads .16 x .52 mm, .03 mm expansion, paste .22 x .30 mm (Gap = .135 mm, fillratio = 80%)
+	- pads .18 x .45 mm, .03 mm expansion, paste .25 x .40 mm (Gap = .115 mm, fillratio = 123%) -> not fixable shorts under the IC
+	- pads .16 x .52 mm, .03 mm expansion, paste .22 x .30 mm (Gap = .135 mm, fillratio = 80%) -> not fixable shorts under the IC
 
 .. image:: ./media_finePitch/SON35_custom.png
 	:width: 600
@@ -150,7 +163,7 @@ BGA12
 - paste pads are round with .25 um diameter, pad-fill = 50 % as the microbumps melt on their own and paste is just to fix the component to the pcb
 - longer outer pads allow for better manual pick and place
 - previous recipes for desaster (shorted paste)
-	- pads round .25 mm, reduced solder mask expansion .03 mm, paste mask round x31 mm (gap = .132 mm, fillratio = 123%)
+	- pads round .25 mm, reduced solder mask expansion .03 mm, paste mask round x31 mm (gap = .132 mm, fillratio = 123%) -> not fixable shorts under the IC
 
 .. image:: ./media_finePitch/BGA12_custom_footprint.png
 	:width: 600
