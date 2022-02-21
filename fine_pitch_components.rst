@@ -55,12 +55,15 @@ Solder Mask
 
 #. default solder mask expansion
 	- solder mask is more efficient in avoiding shorts than the bare substrate
-	- small explanation to the solder mask extension -> manufacturers like betalayout or eurocircuits demand an expansion of ~ .1 mm to compensate layer-offsets during manufacturing
+	- expansion: means the mask opening around a pad is larger than the copper itself (for positive values)
+	- manufacturers like betalayout or eurocircuits demand an expansion of ~ .1 mm to compensate for layer-offsets during manufacturing
 	- offsets became very rare though, so defaulting to .04 - .06 mm is often fine (PCB Constraint)
-	- in special cases like .35mm-pitched components it helps to go as low as .01 mm 
+	- in special cases like .35mm-pitched components it helps to go as low as .01 mm to meet the minimal gap between narrow pad (see mask sliver next)
 #. minimum solder mask sliver (width of mask bridge between pads)
 	- larger gaps help to avoid shorting the solder paste during reflow
-	- defaulting to a minimum gap of (at least) .2 mm between pads (PCB Constraint) even for .35mm-pitched components helps to avoid solder paste shorts during reflow
+	- enforcing a minimum gap of (at least) .2 mm between pads (PCB Constraint) even for .35mm-pitched components helps to avoid solder paste shorts during reflow
+	- it's beneficial for fine pitched components to reduce the mask expansion to widen the gap 
+	- it would also be possible to set the expansion to negative values (narrower solder mask with reference to copper)
 
 Paste Mask
 ----------
@@ -99,9 +102,17 @@ Summary
 Examples
 --------
 
+- Footprints generated with the IPC compliant footprint wizard in Altium, based on parameters from datasheet
 - usage of the suggestions from above for footprints
 - optimized for T3 Paste, 100 um Steel-Stencil
-- tested successfully with betalayout and eurocircuits
+- tested successfully with manufacturers: betalayout, eurocircuits
+- color-legend for the pictures
+	- red: copper pad
+	- purple: solder mask expansion
+	- violet: outline of 3D-Model
+	- yellow: silk screen
+	- grey: paste mask
+	- green: assembly-layer with marking for reference and pin1
 
 SOT95 (TSOT23-6)
 ''''''''''''''''''
@@ -148,11 +159,14 @@ SON35 (XSON8, SOT1203)
 - pitch is .35 mm
 - pads are .13 x .55 mm with reduced mask expansion = .005 mm to satisfy the .2 mm gap between pads
 - paste pads are round with .25 um diameter, pad-fill = 69 %, slightly offset to allow more distance
-- previous recipes for desaster (shorted paste)
+- previous recipes for desaster (shorted solder paste under IC)
 	- pads .18 x .45 mm, .03 mm expansion, paste .25 x .40 mm (Gap = .115 mm, fillratio = 123%) -> not fixable shorts under the IC
 	- pads .16 x .52 mm, .03 mm expansion, paste .22 x .30 mm (Gap = .135 mm, fillratio = 80%) -> not fixable shorts under the IC
 
 .. image:: ./media_finePitch/SON35_custom.png
+	:width: 600
+	
+.. image:: ./media_finePitch/SON35_custom_3D.png
 	:width: 600
 	
 BGA12
@@ -162,7 +176,7 @@ BGA12
 - pads are .22 x .45 (outer row) with reduced mask expansion = .03 mm to widen the gap between pads
 - paste pads are round with .25 um diameter, pad-fill = 50 % as the microbumps melt on their own and paste is just to fix the component to the pcb
 - longer outer pads allow for better manual pick and place
-- previous recipes for desaster (shorted paste)
+- previous recipes for desaster (shorted solder paste under IC)
 	- pads round .25 mm, reduced solder mask expansion .03 mm, paste mask round x31 mm (gap = .132 mm, fillratio = 123%) -> not fixable shorts under the IC
 
 .. image:: ./media_finePitch/BGA12_custom_footprint.png
