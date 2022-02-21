@@ -124,6 +124,9 @@ SOT95 (TSOT23-6)
 .. image:: ./media_finePitch/SOT95_auto_paste.png
 	:width: 600
 	
+.. image:: ./media_finePitch/SOT95_auto_paste_3D.png
+	:width: 600
+	
 SOP50 (TSSOP50-N10)
 ''''''''''''''''''
 
