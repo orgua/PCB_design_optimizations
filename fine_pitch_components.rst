@@ -86,6 +86,9 @@ Paste Mask
 	- suggestions for packages without leads (QFN, DFN, ...) and especially for packages where the metal of the pin extends to side of the IC
 	- reflow results improve when part of the paste pad extends from under the IC (~30%)
 	- solder is less prone to cause shorts under the IC as it collects in a reservoir right in front of the IC when it is not needed under the IC
+#. BGA
+	- they usually don't need paste, due to the melting of the balls
+	- BUT it is a good idea to use paste (reduced fill of ~ 50 % should suffice) to help stabilizing the IC between placing and reflowing 
 	
 Summary
 -------
