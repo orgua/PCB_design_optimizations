@@ -36,7 +36,8 @@ Pads
 	- mechanical advantage as more copper is bonded to the substrate
 #. slim the pad
 	- more distance to neighbouring pad is often better than the mechanical advantage (see solder mask chapter for more detail)
-	- rule of thumb: pad can easily be as narrow as the minimal width of the IC-Pin
+	- rule of thumb: pad can easily be as narrow as the nominal width of the IC-Pin (in Datasheet)
+	- note: too slim pads can cause alignment-problems with the surface tension of paste pulling in the wrong direction
 #. thermal pads
 	- thermals are often recommended too large in datasheet and therefor too near main pads, adjust for > .30 mm gap
 	- if metal under IC is really that large think about placing a keep-out-area on the free space to avoid putting vias there
@@ -54,16 +55,19 @@ Solder Mask
 -----------
 
 #. default solder mask expansion
-	- solder mask is more efficient in avoiding shorts than the bare substrate
+	- solder mask between pads is more efficient in avoiding shorts than the bare substrate
 	- expansion: means the mask opening around a pad is larger than the copper itself (for positive values)
 	- manufacturers like betalayout or eurocircuits demand an expansion of ~ .1 mm to compensate for layer-offsets during manufacturing
-	- offsets became very rare though, so defaulting to .04 - .06 mm is often fine (PCB Constraint)
+	- (big) offsets became very rare though, so defaulting to .04 - .06 mm is often fine (PCB Constraint)
 	- in special cases like .35mm-pitched components it helps to go as low as .01 mm to meet the minimal gap between narrow pad (see mask sliver next)
+
 #. minimum solder mask sliver (width of mask bridge between pads)
 	- larger gaps help to avoid shorting the solder paste during reflow
 	- enforcing a minimum gap of (at least) .2 mm between pads (PCB Constraint) even for .35mm-pitched components helps to avoid solder paste shorts during reflow
 	- it's beneficial for fine pitched components to reduce the mask expansion to widen the gap 
 	- it would also be possible to set the expansion to negative values (narrower solder mask with reference to copper)
+
+Note: some manufacturers are manipulating the mask layer before production. Eurocircuits seems to enforce a ~0.04 mm mask expansion. It is also the measured offset-error. Minimum bridge between pads seems to be ~ 0.2 mm, but after the enforcement.
 
 Paste Mask
 ----------
@@ -84,7 +88,7 @@ Paste Mask
 	- paste is not limited to copper area for ensuring the min width (250 um Paste and 150 um Pad work, see examples later)
 #. adapt mask to IC
 	- suggestions for packages without leads (QFN, DFN, ...) and especially for packages where the metal of the pin extends to side of the IC
-	- reflow results improve when part of the paste pad extends from under the IC (~30%)
+	- reflow results improve when part of the paste pad extends from under the IC (~25%)
 	- solder is less prone to cause shorts under the IC as it collects in a reservoir right in front of the IC when it is not needed under the IC
 #. BGA
 	- they usually don't need paste, due to the melting of the balls
@@ -95,9 +99,9 @@ Summary
 
 - default to slimmer but longer pads that optionally extend from under the IC
 - PCB-Constraint: pad neckdown of <= 100%
-- PCB-Constraint: solder mask extension can be .02 - .06 mm by default
-- PCB-Constraint: solder mask sliver (Gap) should be >= .2 mm
-- PCB-Constraint: paste mask reduction of ~ 30 % for 100 um Stencil but keep minimum width >= 5-6 x your largest paste balls (250 um for T3 Paste)
+- PCB-Constraint: solder mask extension can be .04 - .06 mm by default
+- PCB-Constraint: solder mask sliver (gap / bridge) should be >= .2 mm
+- PCB-Constraint: paste mask reduction of ~ 30 % for 100 um Stencil but keep minimum width >= 5-6 x your largest paste balls (>250 um for T3 Paste)
 - manual solder mask extension for fine-pitched components (to meet the min gap between pads)
 - manual paste pads for fine-pitched components (to meet minimum paste width)
 - custom footprints are generally a good idea
@@ -107,7 +111,7 @@ Examples
 
 - Footprints generated with the IPC compliant footprint wizard in Altium, based on parameters from datasheet
 - usage of the suggestions from above for footprints
-- optimized for T3 Paste, 100 um Steel-Stencil
+- optimized for T3 Paste (or better), 100 um Steel-Stencil
 - tested successfully with manufacturers: betalayout, eurocircuits
 - color-legend for the pictures
 	- red: copper pad
@@ -163,12 +167,13 @@ SON35 (XSON8, SOT1203)
 '''''''''''''''''''''''''''
 
 - pitch is .35 mm
-- pads are .13 x .55 mm with reduced mask expansion = .005 mm to satisfy the .2 mm gap between pads
-- paste pads are round with .25 um diameter, pad-fill = 69 %, slightly offset to allow more distance
+- pads are .145 x .55 mm with reduced mask expansion = .005 mm to satisfy the .2 mm gap between pads
+- paste pads are round with .255 um diameter, pad-fill = 64 %, slightly offset to allow more distance
 - previous recipes for desaster (shorted solder paste under IC)
 	- pads .18 x .45 mm, .03 mm expansion, paste .25 x .40 mm (Gap = .115 mm, fillratio = 123%) -> not fixable shorts under the IC
 	- pads .16 x .52 mm, .03 mm expansion, paste .22 x .30 mm (Gap = .135 mm, fillratio = 80%) -> not fixable shorts under the IC
-
+	- pads .13 x .55 mm, .005 mm expansion, paste round d=.25 (69% fillratio) -> surface tension of paste misaligned the ICs
+	
 .. image:: ./media_finePitch/SON35_custom.png
 	:width: 600
 	
